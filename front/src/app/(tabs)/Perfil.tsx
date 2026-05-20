@@ -4,7 +4,7 @@ export default function Perfil() {
     return(
 
         <View style={styles.container}>
-            <Text style={styles.fonte}> PLACEHOLDER DO PERFIL! {'\n'} (LOCAL PRA FAZER LOGIN E VISUALIZAR O PROPRIO PERFIL) </Text>
+            <Text style={styles.fonte}> PERFIL {'\n'} (Login + Cadastro + Perfil) </Text>
         </View>
         
     )    
@@ -14,13 +14,13 @@ const styles = StyleSheet.create({
 
 container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#ffd000',
     alignItems: 'center',
     justifyContent: 'center',
 },
 
 fonte: {
-    fontSize: 16,
+    fontSize: 18,
 },
 
 });

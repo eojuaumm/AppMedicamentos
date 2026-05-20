@@ -6,7 +6,7 @@ export default function Lembretes() {
     return(
 
         <View style={styles.container}>
-            <Text style={styles.fonte}> PLACEHOLDER DA HOME! {'\n'} (ALARMES SALVOS COM BOTÃO DE ADD) </Text>
+            <Text style={styles.fonte}> HOME {'\n'} (Botão de Adicionar Lembretes + Lembretes Salvos) </Text>
 
                     <TouchableOpacity
                     style ={styles.adicionar}
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     
 container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#2bff00',
     alignItems: 'center',
     justifyContent: 'center',
 },

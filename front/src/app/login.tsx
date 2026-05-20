@@ -26,7 +26,7 @@ export default function Login() {
           {/* Nome e Logo */}
           <View style={styles.header}>
             {/* Colocar Logo */}
-            <Text style={styles.headerTitle}>App</Text>
+            <Text style={styles.headerTitle}></Text>
           </View>
 
           {/* Parte Inferior - O Contentor Branco com a Curva Superior */}
