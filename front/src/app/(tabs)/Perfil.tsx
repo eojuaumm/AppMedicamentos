@@ -2,9 +2,11 @@ import { StyleSheet, View, Text} from 'react-native';
 
 export default function Perfil() {
     return(
+
         <View style={styles.container}>
             <Text style={styles.fonte}> PLACEHOLDER DO PERFIL! {'\n'} (LOCAL PRA FAZER LOGIN E VISUALIZAR O PROPRIO PERFIL) </Text>
         </View>
+        
     )    
 }
 

@@ -18,7 +18,7 @@ export default function App() {
       <View style={styles.bottomEstilo}>
         
         {/* Texto de Boas Vindas */}
-        <Text style={styles.textoGrande}>Bem-vindo ao App</Text>
+        <Text style={styles.textoGrande}>Bem-vindo ao App!</Text>
 
         {/* 2. Botao para Termos */}
         <Button

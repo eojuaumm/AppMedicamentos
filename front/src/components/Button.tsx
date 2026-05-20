@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
   },
   buttonText: {
-    color: '#1B3B45',
+    color: '#000000',
     fontSize: 18,
     fontWeight: 'bold',
     letterSpacing: 1,

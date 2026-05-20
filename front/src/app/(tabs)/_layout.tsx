@@ -3,7 +3,24 @@ import { Tabs } from 'expo-router'
 export default function Layout() {
     return (
         
-        <Tabs />
+        <Tabs>
+
+            <Tabs.Screen
+            name='Lembretes'
+            options={{ title: 'Lembretes' }}
+            />
+
+            <Tabs.Screen
+            name='Mapa'
+            options={{ title: 'Mapa' }}
+            />
+
+            <Tabs.Screen
+            name='Perfil'
+            options={{ title: 'Perfil' }}
+            />
+
+        </Tabs>
 
     )
 }
