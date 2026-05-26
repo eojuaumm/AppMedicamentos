@@ -10,8 +10,8 @@ import br.edu.uninassau.alarme.repository.HistoricoRepository;
 
 @RestController
 @RequestMapping("/historicos")
-
 public class HistoricoController {
+
     @Autowired
     private HistoricoRepository historicoRepository;
 
@@ -25,9 +25,9 @@ public class HistoricoController {
     public ResponseEntity<List<Historico>> listarHistoricos() {
         return ResponseEntity.ok(historicoRepository.findAll());
     }
+}
 
-
-    @PutMapping("/{id}")
+ @PutMapping("/{id}")
     public ResponseEntity<String> atualizarHistorico(@PathVariable Long id, @RequestBody Historico atualizarHistorico) {
     	return historicoRepository.findById(id).map(historico -> {
 		historico.setDataHoraPrevista(atualizarHistorico.getDataHoraPrevista());
@@ -40,7 +40,6 @@ public class HistoricoController {
 		
 	
 }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarHistorico(@PathVariable Long id) {

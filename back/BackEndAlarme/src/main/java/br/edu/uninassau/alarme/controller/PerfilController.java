@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-import br.edu.uninassau.alarme.entity.Medicamento;
 import br.edu.uninassau.alarme.entity.Perfil;
 import br.edu.uninassau.alarme.repository.PerfilRepository;
 
@@ -26,8 +25,9 @@ public class PerfilController {
     public ResponseEntity<List<Perfil>> listarPerfis() {
         return ResponseEntity.ok(perfilRepository.findAll());
     }
-    
-    @PutMapping("/{id}")
+}
+
+ @PutMapping("/{id}")
     public ResponseEntity<String> atualizarPerfil(@PathVariable Long id, @RequestBody Perfil atualizarPerfil) {
     	return perfilRepository.findById(id).map(perfil-> {
     		perfil.setNome(atualizarPerfil.getNome());
@@ -38,7 +38,6 @@ public class PerfilController {
     	
 
     }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarPerfil(@PathVariable Long id) {

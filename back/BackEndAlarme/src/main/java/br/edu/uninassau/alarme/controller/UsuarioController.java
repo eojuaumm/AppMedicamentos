@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-import br.edu.uninassau.alarme.entity.Tratamento;
 import br.edu.uninassau.alarme.entity.Usuario;
 import br.edu.uninassau.alarme.repository.UsuarioRepository;
 
@@ -27,8 +26,9 @@ public class UsuarioController {
         List<Usuario> lista = usuarioRepository.findAll();
         return ResponseEntity.ok(lista);
     }
-    
-    @PutMapping("/{id}")
+}
+
+ @PutMapping("/{id}")
     public ResponseEntity<String> atualizarUsuario(@PathVariable Long id, @RequestBody Usuario atualizarUsuario) {
     	return usuarioRepository.findById(id).map(usuario-> {
     		usuario.setNome(atualizarUsuario.getNome());
@@ -40,7 +40,6 @@ public class UsuarioController {
     	
 
     }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarUsuario(@PathVariable Long id) {

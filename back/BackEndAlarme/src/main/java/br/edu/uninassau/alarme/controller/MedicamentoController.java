@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
-import br.edu.uninassau.alarme.entity.Historico;
 import br.edu.uninassau.alarme.entity.Medicamento;
 import br.edu.uninassau.alarme.repository.MedicamentoRepository;
 
@@ -25,9 +23,9 @@ public class MedicamentoController {
     public ResponseEntity<List<Medicamento>> listar() {
         return ResponseEntity.ok(medicamentoRepository.findAll());
     }
+}
 
-
-    @PutMapping("/{id}")
+ @PutMapping("/{id}")
     public ResponseEntity<String> atualizarMedicamento(@PathVariable Long id, @RequestBody Medicamento atualizarMedicamento) {
     	return medicamentoRepository.findById(id).map(medicamento-> {
     	medicamento.setNome(atualizarMedicamento.getNome());
@@ -38,7 +36,6 @@ public class MedicamentoController {
 	
 
 }
-
 
 @DeleteMapping("/{id}")
 public ResponseEntity<String> deletarMedicamento(@PathVariable Long id) {
