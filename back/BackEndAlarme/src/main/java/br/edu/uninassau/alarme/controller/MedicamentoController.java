@@ -23,26 +23,25 @@ public class MedicamentoController {
     public ResponseEntity<List<Medicamento>> listar() {
         return ResponseEntity.ok(medicamentoRepository.findAll());
     }
-}
 
- @PutMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> atualizarMedicamento(@PathVariable Long id, @RequestBody Medicamento atualizarMedicamento) {
-    	return medicamentoRepository.findById(id).map(medicamento-> {
-    	medicamento.setNome(atualizarMedicamento.getNome());
-    	medicamento.setUnidadeMedida(atualizarMedicamento.getUnidadeMedida());
-    	medicamento.setDescricao(atualizarMedicamento.getDescricao());
-    	return ResponseEntity.ok ("Medicamento atualizado com Sucesso!!");
-    }).orElse (ResponseEntity.notFound().build());
-	
+        return medicamentoRepository.findById(id).map(medicamento -> {
+            medicamento.setNome(atualizarMedicamento.getNome());
+            medicamento.setUnidadeMedida(atualizarMedicamento.getUnidadeMedida());
+            medicamento.setDescricao(atualizarMedicamento.getDescricao());
+            medicamentoRepository.save(medicamento);
+            return ResponseEntity.ok("Medicamento atualizado com Sucesso!!");
+        }).orElse(ResponseEntity.notFound().build());
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletarMedicamento(@PathVariable Long id) {
+        if (medicamentoRepository.existsById(id)) {
+            medicamentoRepository.deleteById(id);
+            return ResponseEntity.ok("Medicamento deletado com Sucesso!!");
+        }
+        return ResponseEntity.status(404).body("Medicamento não encontrado!");
+    }
 }
 
-@DeleteMapping("/{id}")
-public ResponseEntity<String> deletarMedicamento(@PathVariable Long id) {
-	if (medicamentoRepository.existsById(id)) {
-	medicamentoRepository.deleteById(id);
-	 return ResponseEntity.ok("Medicamento deletado com Sucesso!!");
-}
-	return ResponseEntity.status(404).body("Medicamento não encontrado!");
-}
-}

@@ -25,7 +25,7 @@ public class HistoricoController {
     public ResponseEntity<List<Historico>> listarHistoricos() {
         return ResponseEntity.ok(historicoRepository.findAll());
     }
-}
+
 
  @PutMapping("/{id}")
     public ResponseEntity<String> atualizarHistorico(@PathVariable Long id, @RequestBody Historico atualizarHistorico) {

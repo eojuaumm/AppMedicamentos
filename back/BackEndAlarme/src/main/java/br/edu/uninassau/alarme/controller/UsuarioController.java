@@ -26,27 +26,25 @@ public class UsuarioController {
         List<Usuario> lista = usuarioRepository.findAll();
         return ResponseEntity.ok(lista);
     }
-}
 
- @PutMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> atualizarUsuario(@PathVariable Long id, @RequestBody Usuario atualizarUsuario) {
-    	return usuarioRepository.findById(id).map(usuario-> {
-    		usuario.setNome(atualizarUsuario.getNome());
-    		usuario.setEmail(atualizarUsuario.getEmail());
-    		usuario.setSenha(atualizarUsuario.getSenha());
-    		usuario.setFusoHorario(atualizarUsuario.getFusoHorario());
-    	return ResponseEntity.ok ("Usuario atualizado com Sucesso!!");
-    }).orElse (ResponseEntity.notFound().build());
-    	
-
+        return usuarioRepository.findById(id).map(usuario -> {
+            usuario.setNome(atualizarUsuario.getNome());
+            usuario.setEmail(atualizarUsuario.getEmail());
+            usuario.setSenha(atualizarUsuario.getSenha());
+            usuario.setFusoHorario(atualizarUsuario.getFusoHorario());
+            usuarioRepository.save(usuario);
+            return ResponseEntity.ok("Usuario atualizado com Sucesso!!");
+        }).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarUsuario(@PathVariable Long id) {
-    	if (usuarioRepository.existsById(id)) {
-    	usuarioRepository.deleteById(id);
-    	 return ResponseEntity.ok("Usuario deletado com Sucesso!!");
+        if (usuarioRepository.existsById(id)) {
+            usuarioRepository.deleteById(id);
+            return ResponseEntity.ok("Usuario deletado com Sucesso!!");
+        }
+        return ResponseEntity.status(404).body("Usuario não encontrado!");
     }
-    	return ResponseEntity.status(404).body("Usuario não encontrado!");
-    }
-    }
+}

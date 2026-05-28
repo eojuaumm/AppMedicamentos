@@ -25,31 +25,29 @@ public class TratamentoController {
     public ResponseEntity<List<Tratamento>> listarTratamentos() {
         return ResponseEntity.ok(tratamentoRepository.findAll());
     }
-}
 
- @PutMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> atualizarTratamento(@PathVariable Long id, @RequestBody Tratamento atualizarTratamento) {
-    	return tratamentoRepository.findById(id).map(tratamento-> {
-    		tratamento.setDataInicio(atualizarTratamento.getDataInicio());
-    		tratamento.setDataFim(atualizarTratamento.getDataFim());
-    		tratamento.setIntervaloHoras(atualizarTratamento.getIntervaloHoras());
-    		tratamento.setSomAlarme(atualizarTratamento.getSomAlarme());
-    		tratamento.setNivelPrioridade(atualizarTratamento.getNivelPrioridade());
-    		tratamento.setStatus(atualizarTratamento.getStatus());
-    		tratamento.setPerfil(atualizarTratamento.getPerfil());
-    		tratamento.setMedicamento(atualizarTratamento.getMedicamento());
-    	return ResponseEntity.ok ("Tratamento atualizado com Sucesso!!");
-    }).orElse (ResponseEntity.notFound().build());
-    	
-
+        return tratamentoRepository.findById(id).map(tratamento -> {
+            tratamento.setDataInicio(atualizarTratamento.getDataInicio());
+            tratamento.setDataFim(atualizarTratamento.getDataFim());
+            tratamento.setIntervaloHoras(atualizarTratamento.getIntervaloHoras());
+            tratamento.setSomAlarme(atualizarTratamento.getSomAlarme());
+            tratamento.setNivelPrioridade(atualizarTratamento.getNivelPrioridade());
+            tratamento.setStatus(atualizarTratamento.getStatus());
+            tratamento.setPerfil(atualizarTratamento.getPerfil());
+            tratamento.setMedicamento(atualizarTratamento.getMedicamento());
+            tratamentoRepository.save(tratamento);
+            return ResponseEntity.ok("Tratamento atualizado com Sucesso!!");
+        }).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarTratamento(@PathVariable Long id) {
-    	if (tratamentoRepository.existsById(id)) {
-    	tratamentoRepository.deleteById(id);
-    	 return ResponseEntity.ok("Tratamento deletado com Sucesso!!");
+        if (tratamentoRepository.existsById(id)) {
+            tratamentoRepository.deleteById(id);
+            return ResponseEntity.ok("Tratamento deletado com Sucesso!!");
+        }
+        return ResponseEntity.status(404).body("Tratamento não encontrado!");
     }
-    	return ResponseEntity.status(404).body("Tratamento não encontrado!");
-    }
-    }
+}
